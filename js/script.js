@@ -16,6 +16,8 @@ let countFemale = null;
 let sumAges = null;
 let avgAge = null;
 
+let searchBox = null;
+
 let numberFormat = null;
 
 window.addEventListener('load', () => {
@@ -32,11 +34,13 @@ window.addEventListener('load', () => {
 
   numberFormat = Intl.NumberFormat('pt-BR');
 
+  searchBox = document.querySelector('#search');
+
   fetchUsers();
 })
 
 async function fetchUsers() {
-  const res = await fetch('https://randomuser.me/api/?seed=javascript&results=10&nat=BR&noinfo');
+  const res = await fetch('https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo');
   const json = await res.json();
   allUsers = json.results.map(users => {
     const { name, picture, dob, gender } = users;
@@ -64,10 +68,14 @@ function handleEvents() {
   let searchButton = document.querySelector('.btn');
 
   searchButton.addEventListener('click', () => searchUsers());
+
+  searchBox.addEventListener('keyup', handleTyping);
+  searchBox.focus();
   
 }
 
 function searchUsers() {
+  console.log('----');
   let toSearch = document.querySelector('#search').value;
   const regexp = new RegExp(toSearch, 'i');
 
@@ -119,26 +127,24 @@ function renderStatistics() {
   }, 0)/selectedUsers.length;
 
   avgAge.textContent = formatNumber(avgUsersAge);
-  
 }
 
 function formatNumber(number) {
   return numberFormat.format(number);
 }
 
+function handleTyping(event) {
+  if(event.key === 'Enter') {
+    if(event.target.value.trim().length === 0) {
+      clearInput();
+      return;
+    }
+    searchUsers();
+  }
+}
 
-
-
-function addToFavorites(id) {
-  const countryToAdd = allCountries.find(country => country.id === id);
-  
-  favoriteCountries = [...favoriteCountries, countryToAdd];
-
-  favoriteCountries.sort((a, b) => {
-    return a.name.localeCompare(b.name)
-  })
-
-  allCountries = allCountries.filter(country => country.id !== id);
-
+const clearInput = () => {
+  selectedUsers = allUsers;
+  countUsers = selectedUsers.length;
   render();
 }
