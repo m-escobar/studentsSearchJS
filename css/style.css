@@ -1,0 +1,39 @@
+
+.container {
+  display: flex;
+}
+
+.results {
+  display: flex;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn {
+  padding: 5px;
+}
+.second-container {
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+/* eliminar se não usar */
+img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+
+.favorites-list {
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-right: 10px;
+}

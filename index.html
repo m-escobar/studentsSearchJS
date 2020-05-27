@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <title>Pesquisa de Usuários</title>
+</head>
+
+<body>
+  <h2>Pesquisa de Usuários</h2>
+  <div class="container">
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Pesquisar">
+      <a class="waves-effect waves-light btn">Pesquisar</a>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="second-container">
+      <h5><span id="usersHeader">Usuários</span></h5>
+      <div class="tabUsers">
+      </div>
+    </div>
+    <div class="second-container">
+      <h5><span id="statisticsHeader">Estatísticas</span></h5>
+      <div class="tabStatistics">
+        <p>Sexo Masculino: <span id="male"></span></p>
+        <p>Sexo Feminino: <span id="female"></span></p>
+        <p>Soma das Idades: <span id="sumAges"></span></p>
+        <p>Média das Idades: <span id="avgAge"></span></p>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/script.js"></script>
+</html>
